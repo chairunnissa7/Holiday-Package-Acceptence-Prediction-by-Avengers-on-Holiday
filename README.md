@@ -121,17 +121,28 @@ The dataset has 4888 rows, 20 columns and **1 target ** variable `ProdTaken`
 		To handle the duplicate values, we will delete those rows. Before deleting the duplicate column, the dataset has **4888 rows** and after deleting the duplicate values, the number of rows becomes **4747 rows**.
 	
 	- Split Data Train and Test
+	
 		In a basic two-part data split, the training data set is used to train and develop models. Training sets are commonly used to estimate different parameters or to compare different model performance. The testing data set is used after the training is done.
 		
 		In this dataset we split the train and test data 80: 20. With results for Data Train (3797, 19) (3797,) and Data Test (950, 19) (950,)
 		
 	- Outlier Handling
+	-
+	
 	- Feature Encoding
 	
 
 - ### Classification Model
+- 
 		
 
+|  | Logistic Regression | Decision Tree | Random Forest | AdaBoost | XGBoost
+|--|--|--|--|--|--|--|--|--|--|--|--|
+| Accuracy | 0.82 | 0.86 | 0.88 | 0.82 | 0.91 |
+| Precision | 0.61 | 0.65 |0.77  | 0.56 | 0.85
+| Recall | 0.22 | 0.62 | 0.55 | 0.26 | 0.66
+| F1-Score | 0.32 | 0.64 | 0.64 | 0.36 |0.74
+| AUC | 0.79 | 1.0 | 1.0 | 0.82 | 0.99
 
 
 # Conclusion
