@@ -1,3 +1,4 @@
+
 # Holiday Package Acceptence by Avengers on Holiday !
 
 # Members
@@ -101,19 +102,19 @@ The dataset has 4888 rows, 20 columns and **1 target ** variable `ProdTaken`
 	
 - ### Data Cleansing & Preprocessing
 	- Missing Value, Value Replacement and Handling Duplicate Value 
-		### Missing Value
+		#### Missing Value
 		Handling missing values starts with identifying which columns have missing values, followed by analysing the distribution of the data (stage 1)
 
 		Columns that have missing data are Age, TypeofContact, DurationOfPitch, NumberofFollowups, PreferredPropertyStar, NumberOfTrips, NumberOfChildrenVisiting and MonthlyIncome.
 
-		### Value Replacement
+		#### Value Replacement
 		Handling Value Replacement  in Gender, MaritalStatus, ProductPitched and Occupation columns.
 		- For the Gender column, there is a value that we changed from Fe Male to Female.
 		- For the MaritalStatus column, the values Unmarried and Divorce are changed to Single.
 		- For the ProductPitched column, the product Standard is changed to Basic.
 		-  For the Occupation column, for the job as a Freelancer is changed to Small Business.
 		
-		### Handling Duplicate Value
+		#### Handling Duplicate Value
 		Making sure that there are no duplicated data is one of the aspect of understanding the data itself.
 		
 		After checking the Duplicate Value without using the Customer ID column. There are 141 rows that have duplicate values.
@@ -127,23 +128,43 @@ The dataset has 4888 rows, 20 columns and **1 target ** variable `ProdTaken`
 		In this dataset we split the train and test data 80: 20. With results for Data Train (3797, 19) (3797,) and Data Test (950, 19) (950,)
 		
 	- Outlier Handling
-	-
+		We handle outliers with IQR and standardization/ normalization to make sure all features are stable for modelling. 
+	
+	- Feature Transformation
+	The goal of feature transformation is to create a dataset where each format helps improve your aiml models' performance.
+	
+		For Normalisation and standardisation we do it by using MinMaxScaler on the columns 'Age', 'NumberOfChildrenVisiting', 'PitchSatisfactionScore', 'NumberOfFollowups', 'NumberOfPersonVisiting', 'DurationOfPitch', 'MonthlyIncome', 'NumberOfTrips' in Data Train and Data Test.
+		
+	- Feature Extraction
+	Created new columns for features in the train data and test data. Added the values of the `numberofpersonvisiting` and `numberofchildrenvisiting` columns.
 	
 	- Feature Encoding
-	
+	Feature Encoding is the process of converting categorical features into numeric features. To make the data can be used safely and adequately by different users using various systems. For columns `prodtaken`, `typeofcontact`, `occupation`, `gender`, `productpitch`, `marital_status`, `designation`, and `passport`.
 
+	- Feature Selection
+	Removing irrelevant or redundant features by using f_classif method for numerical features and chi2 method for categorical features.
+
+		From the feature selection using chi2 and selectkbest method, we get the columns ['MonthlyIncome',  'Age',  'DurationOfPitch', 'NumberOfFollowups', 'PitchSatisfactionScore', 'Passport',  'ProductPitched', 'Is Married', 'Designation', 'CityTier',  'Occupation_Large Business']
+	
+	- Handling Class Imbalance
+	Class imbalance is a condition in a classification problem classification problem where the distribution of unique values in the target is highly unbalanced.  
+
+		It simply indicates that the frequency of the target class is very unbalanced, i.e. The occurrence of one of the classes is very high compared to the other classes present. In the dataset we use for the target feature **`Prod_taken`** Has an unbalanced value. So we do a class imbalance on the Prod_taken column
+	
 - ### Classification Model
-- 
 		
 
-|  | Logistic Regression | Decision Tree | Random Forest | AdaBoost | XGBoost
-|--|--|--|--|--|--|--|--|--|--|--|--|
+|  | Logistic Regression | Decision Tree | Random Forest | AdaBoost | XGBoost |
+|-----------|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
 | Accuracy | 0.82 | 0.86 | 0.88 | 0.82 | 0.91 |
-| Precision | 0.61 | 0.65 |0.77  | 0.56 | 0.85
-| Recall | 0.22 | 0.62 | 0.55 | 0.26 | 0.66
-| F1-Score | 0.32 | 0.64 | 0.64 | 0.36 |0.74
-| AUC | 0.79 | 1.0 | 1.0 | 0.82 | 0.99
+| Precision | 0.61 | 0.65 |0.77  | 0.56 | 0.85 |
+| Recall | 0.22 | 0.62 | 0.55 | 0.26 | 0.66 |
+| F1-Score | 0.32 | 0.64 | 0.64 | 0.36 |0.74 |
+| AUC | 0.79 | 1.0 | 1.0 | 0.82 | 0.99 |
 
+# Feature Importance
+
+We can use the results of feature importance as a business insight and also use this feature as an addition to our experiments in the model (to reduce complexity and avoid the curse of dimensionality). 
 
 # Conclusion
 
@@ -157,13 +178,9 @@ Customers who we consider potential to purchase Holiday Packages
 
 # Business Recomendation
 
-1. We recommend the Marketing Team to make more offers on
-on Basic and Deluxe Products to customers.
+1. We recommend the Marketing Team to make more offers on on Basic and Deluxe Products to customers.
 2. Prioritise the Single age group with Teenage Age (18-25 years old) with a field duration under 20 minutes.
-3. Doing a marketing strategy with a max. call duration of 20 minutes, will
-have a greater chance for customers to take the product offered. With a more effective and concise way of offering.
-4. Providing coupons or additional discounts to customers who are already
-provide additional coupons or discounts to customers who are married, to increase the number of customers who buy holiday packages from the
-from that group.
+3. Doing a marketing strategy with a max. call duration of 20 minutes, will have a greater chance for customers to take the product offered. With a more effective and concise way of offering.
+4. Providing coupons or additional discounts to customers who are already provide additional coupons or discounts to customers who are married, to increase the number of customers who buy holiday packages from the from that group.
 5. The company's marketing team should offer packages based on the customer's monthly income and job title.
 
